@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Student management dashboard demo for Future Labs Africa.">
+  <title>Student Dashboard | Future Labs Africa</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body data-page="home">
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark">FL</span><span>Future Labs <small>Africa</small></span></a>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <nav class="site-nav">
+      <a class="active" href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="courses.html">Courses</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">STUDENT MANAGEMENT PORTAL</p>
+        <h1>Every learner's progress, <span>in one place.</span></h1>
+        <p>Register students, keep their records organised and understand performance at a glance.</p>
+        <a class="btn btn-light" href="#registration">Register a student <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+        <div class="art-card"><span class="art-icon">✦</span><strong>Learning</strong><small>made visible</small><div class="art-bars"><i></i><i></i><i></i><i></i><i></i></div></div>
+        <span class="float-dot dot-one"></span><span class="float-dot dot-two"></span>
+      </div>
+    </section>
+
+    <section class="section dashboard-section">
+      <div class="section-heading"><div><p class="eyebrow">OVERVIEW</p><h2>Dashboard</h2></div><p class="muted">Live summary of registered students</p></div>
+      <div class="stats-grid">
+        <article class="stat-card"><span class="stat-icon purple">♙</span><p>Total students</p><strong id="totalStudents">0</strong><small>Registered learners</small></article>
+        <article class="stat-card"><span class="stat-icon green">✓</span><p>Passed</p><strong id="passedStudents">0</strong><small>Marks of 50 and above</small></article>
+        <article class="stat-card"><span class="stat-icon red">!</span><p>Failed</p><strong id="failedStudents">0</strong><small>Marks below 50</small></article>
+        <article class="stat-card"><span class="stat-icon blue">％</span><p>Average marks</p><strong id="averageMarks">0%</strong><small>Across all learners</small></article>
+      </div>
+    </section>
+
+    <section class="section" id="registration">
+      <div class="section-heading"><div><p class="eyebrow">NEW RECORD</p><h2>Student registration</h2></div><p class="muted">All fields are required</p></div>
+      <div class="panel form-panel">
+        <form id="studentForm" class="form-grid" novalidate>
+          <label class="field field-wide">Student full name<input id="studentName" name="name" type="text" placeholder="e.g. Mary Wanjiku" required></label>
+          <label class="field">Age<input id="studentAge" name="age" type="number" min="1" max="120" placeholder="e.g. 21" required></label>
+          <label class="field">Gender<select id="studentGender" name="gender" required><option value="">Select gender</option><option>Female</option><option>Male</option><option>Prefer not to say</option></select></label>
+          <label class="field">Course<select id="studentCourse" name="course" required><option value="">Select course</option><option>Software Development</option><option>Web Design</option><option>Data Analysis</option><option>Cyber Security</option><option>Networking</option><option>Graphic Design</option><option>Digital Marketing</option><option>Computer Packages</option></select></label>
+          <label class="field">Marks (0–100)<input id="studentMarks" name="marks" type="number" min="0" max="100" placeholder="e.g. 85" required></label>
+          <div class="form-actions field-wide"><p id="formMessage" class="form-message" role="status" aria-live="polite"></p><button class="btn btn-primary" type="submit">Add student <span>＋</span></button></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section records-section">
+      <div class="section-heading"><div><p class="eyebrow">LEARNER DIRECTORY</p><h2>Student records</h2></div><span class="record-count" id="recordCount">0 records</span></div>
+      <div class="toolbar">
+        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search student by name..." aria-label="Search students by name"></label>
+        <select id="courseFilter" aria-label="Filter by course"><option value="">All courses</option><option>Software Development</option><option>Web Design</option><option>Data Analysis</option><option>Cyber Security</option><option>Networking</option><option>Graphic Design</option><option>Digital Marketing</option><option>Computer Packages</option></select>
+        <button id="sortButton" class="btn btn-outline" type="button">Sort: highest marks ↓</button>
+      </div>
+      <div class="table-wrap panel">
+        <table>
+          <thead><tr><th>Student</th><th>Age</th><th>Gender</th><th>Course</th><th>Marks</th><th>Performance</th><th>Actions</th></tr></thead>
+          <tbody id="studentTableBody"><tr class="empty-row"><td colspan="7">No students registered yet. Add the first student using the form above.</td></tr></tbody>
+        </table>
+      </div>
+      <div class="record-insights" id="recordInsights"><span>🏆 Highest: <strong id="highestStudent">—</strong></span><span>↘ Lowest: <strong id="lowestStudent">—</strong></span></div>
+      <div class="bottom-actions"><button id="clearAllButton" class="btn btn-danger-ghost" type="button">Clear all records</button><p class="muted tiny">Demo records reset when the page is refreshed.</p></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-main"><a class="brand brand-footer" href="index.html"><span class="brand-mark">FL</span><span>Future Labs <small>Africa</small></span></a><p>Equip Talent, Shape Tomorrow.</p><div class="footer-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="courses.html">Courses</a><a href="contact.html">Contact</a></div></div><div class="footer-bottom"><span>© <span class="year"></span> Future Labs Africa. Educational demo project.</span><span>Built with HTML, CSS & JavaScript</span></div></footer>
+</body>
+</html>
